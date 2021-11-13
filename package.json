@@ -1,0 +1,21 @@
+{
+  "name": "toothsome-tomato",
+  "version": "0.1.0",
+  "author": "Albert Domotor",
+  "description": "toothsome pomo",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron-drag": "^2.0.0",
+    "node-notifier": "^10.0.0",
+    "tilt.js": "^1.2.1"
+  },
+  "devDependencies": {
+    "electron": "^12.2.1"
+  },
+  "build": {
+    "appId": "com.toothsome.tomato"
+  }
+}

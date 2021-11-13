@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Toothsome Tomato</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <ul class="cards">
+    <div class="main-pomodoro-card focus" id="main-pomodoro-card">
+        <div class="titlebar">
+            <div class="corner-button-container">
+                <div class="corner-button settings">
+                    <svg viewPort="0 0 12 12" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" height="13px" width="13px">
+                    <line x1="6.5" y1="6.5" 
+                        x2="6.5" y2="6.5" 
+                        stroke="white" 
+                        stroke-width="6"
+                        stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="corner-button minimize">
+                    <svg viewPort="0 0 12 12" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" height="13px" width="13px">
+                    <line x1="4.5" y1="6.5" 
+                        x2="8.5" y2="6.5" 
+                        stroke="white" 
+                        stroke-width="3"
+                        stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="corner-button close" onClick="window.closeCurrentWindow();">
+                    <svg viewPort="0 0 12 12" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" height="13px" width="13px">
+                    <line x1="4.5" y1="4.5" 
+                        x2="8.5" y2="8.5" 
+                        stroke="white" 
+                        stroke-width="3"
+                        stroke-linecap="round"/>
+                    <line x1="4.5" y1="8.5" 
+                        x2="8.5" y2="4.5" 
+                        stroke="white" 
+                        stroke-width="3"
+                        stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="main-timer">
+            <div class="timer-inner" id="break-icon" data-parallax style="transform: translateZ(20px);"></div>
+            <div class="timer-shadow" id="break-icon"></div>
+            <svg
+            class="progress-ring"
+            width="124"
+            height="124"
+            style="transform: translateZ(10px);" data-parallax>
+        <circle
+            class="progress-ring__path"
+            stroke="white"
+            stroke-width="6"
+            fill="transparent"
+            r="50"
+            cx="62"
+            cy="62"/>
+        <circle
+            class="progress-ring__circle"
+            stroke="white"
+            stroke-width="6"
+            stroke-linecap="round"
+            fill="transparent"
+            r="50"
+            cx="62"
+            cy="62"/>
+        </svg>
+        <svg
+        class="progress-ring shadow"
+        width="124"
+        height="124">
+    <circle
+        class="progress-ring__path"
+        stroke="white"
+        stroke-width="6"
+        fill="transparent"
+        r="50"
+        cx="62"
+        cy="62"/>
+    <circle
+        class="progress-ring__circle"
+        stroke="white"
+        stroke-width="6"
+        stroke-linecap="round"
+        fill="transparent"
+        r="50"
+        cx="62"
+        cy="62"/>
+    </svg>
+        </div>
+        <p class="countdown"></p>
+        <div class="button-shadow"></div>
+        <div class="button"><p class="rounds">1/4</p><button class="control play"><img fill="white"></button><img src="./inc/icons/skip_next_24dp.svg" fill="white" class="next" onClick="switchCard(false)"></div>
+    </div>
+    </ul>
+    </div>
+<script src="./js/particles.min.js"></script>
+<script src="./js/card-particles.js"></script>
+</body>
+<script src="./js/base.js"></script>
+<script src="./js/window-buttons.js"></script>
+<script src="./renderer.js"></script>
+</html>
