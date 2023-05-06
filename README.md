@@ -9,7 +9,7 @@ This is a small desktop app that I made in 2021 because I wanted to experiment w
 ![](https://raw.githubusercontent.com/albiDmtr/toothsome-tomato/main/demo.gif)
 
 # Installation:
-For **Windows**, you can download the installer from `toothsome-tomato/installer`, or by clicking to the link below:
+For **Windows**, you can download the installer from `toothsome-tomato/installer`, or by clicking at the link below:
 ##### [Download for Windows](https://github.com/albiDmtr/toothsome-tomato/raw/main/installer/Toothsome%20Tomato%20Setup%200.1.0.exe "##### Download for Windows")
 
 If you're using **Mac or Linux**, you need to build the app from the source code. To do that, clone this repository and use a tool like `electron-builder` or `electron-packager`.
