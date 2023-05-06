@@ -1,5 +1,6 @@
 {
   "name": "toothsome-tomato",
+  "productName": "Toothsome Tomato",
   "version": "0.1.0",
   "author": "Albert Domotor",
   "description": "A pomodoro app that feels good to use.",
