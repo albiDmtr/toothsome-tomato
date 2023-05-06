@@ -5,13 +5,14 @@
     <title>Toothsome Tomato</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" href="./style/style.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://cdnjs.cloudflare.com ">
 </head>
 <body>
     <ul class="cards">
     <div class="main-pomodoro-card focus" id="main-pomodoro-card">
         <div class="titlebar">
             <div class="corner-button-container">
-                <div class="corner-button settings">
+                <div class="corner-button settings" onClick="toggleSettings();">
                     <svg viewPort="0 0 12 12" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" height="13px" width="13px">
                     <line x1="6.5" y1="6.5" 
@@ -99,14 +100,30 @@
         </div>
         <p class="countdown"></p>
         <div class="button-shadow"></div>
-        <div class="button"><p class="rounds">1/4</p><button class="control play"><img fill="white"></button><img src="./inc/icons/skip_next_24dp.svg" fill="white" class="next" onClick="switchCard(false)"></div>
+        <div class="button"><p class="rounds">1/4</p><button class="control play"><img fill="white"></button><img src="./inc/icons/skip_next_24dp.svg" fill="white" class="next" onClick="handleSkip()"></div>
+
+    <div class="main-settings">
+        <p><b>Focus time:</b></p>
+        <input type="number" class="input-focustime" onchange="saveSettings();"> seconds
+        <div class="setting-line"></div>
+        <p><b>Break time:</b></p>
+        <input type="number" class="input-breaktime" onchange="saveSettings();"> seconds
+        <div class="setting-line"></div>
+        <p><b>Long break time:</b></p>
+        <input type="number" class="input-longbreaktime" onchange="saveSettings();"> seconds
+        <div class="setting-line"></div>
+        <p><b>Long break after:</b></p>
+        <input type="number" class="input-rounds" onchange="saveSettings();"> focus rounds
+        <br>
     </div>
+
     </ul>
     </div>
 <script src="./js/particles.min.js"></script>
 <script src="./js/card-particles.js"></script>
 </body>
 <script src="./js/base.js"></script>
+<script src="./js/notifications.js"></script>
 <script src="./js/window-buttons.js"></script>
 <script src="./renderer.js"></script>
 </html>

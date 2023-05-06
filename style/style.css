@@ -1,0 +1,391 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../inc/Roboto-Regular.ttf);
+  }
+
+/* Main window */
+body {
+    font-family: Roboto;
+    color:rgba(255,255,255,0.7);
+    text-align: center;
+    width:150px;
+    height:225px;
+    border-radius: 20px;
+    overflow:hidden;
+    user-select: none;
+}
+*:focus {
+    outline:none;
+}
+.main-pomodoro-card{
+    margin-top: 10px;
+    margin-left: 20px;
+    width:150px;
+    height:225px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 0 rgba(0,0,0,0.3);
+    transition:0.3s;
+    background: rgb(255,0,0);
+    background: linear-gradient(315deg, rgba(255,0,0,1) 0%, rgba(255,134,53,1) 52%);
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+}
+.main-pomodoro-card.break {
+    background-image: url(../inc/break_bg.png);
+}
+.main-pomodoro-card.focus {
+    background-image: url(../inc/focus_bg.png);
+}
+.cards{
+    width:150px;
+    padding:0;
+}
+
+/* titlebar */
+
+.titlebar{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 134px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    padding:8px;
+    justify-content: flex-end;
+    transition: 0.5s;
+    -webkit-app-region: drag;
+    transform: translateZ(30px);
+}
+.corner-button-container {
+    -webkit-app-region: no-drag;
+    display: flex;
+    cursor:pointer;
+}
+.transparent {
+    opacity: 0;
+}
+.drag{
+    opacity:0.2;
+    position: absolute;
+    top: 7.5px;
+    left: 8px;
+    vertical-align: middle;
+}
+.drag img{
+    width:20px;
+    height:20px;
+}
+.corner-button{
+    background: rgba(0,135,121,0.7);
+    width:13px;
+    height:13px;
+    border-radius:13px;
+    margin:2.5px;
+    transition: 0.3s;
+    line-height:0;
+    font-size:8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: 0.4s;
+}
+.corner-button.mouseover svg {
+    opacity: 0.7;
+}
+.corner-button svg {
+    opacity: 0;
+    transition: 0.2s;
+}
+.main-pomodoro-card.break .corner-button {
+    background-color: rgba(0,135,121,0.7);
+}
+.main-pomodoro-card.focus .corner-button {
+    background-color: rgba(148,102,47,0.7);
+}
+.close div {
+    height: 9px;
+    width: 3px;
+    border-radius: 4px;
+    position: absolute;
+    transform-origin: center;
+    background-color: rgb(0,135,121);
+    filter:brightness(170%);
+}
+.main-pomodoro-card.break .corner-button div {
+    background-color: rgb(0,135,121);
+}
+.main-pomodoro-card.break .corner-button div {
+    background-color: rgb(148,102,47);
+}
+.close div:nth-of-type(1) {
+    transform:rotate(45deg);
+}
+.close div:nth-of-type(2) {
+    transform:rotate(315deg); 
+}
+
+.minimize div {
+    height: 3px;
+    width: 8px;
+    border-radius: 4px;
+    position: absolute;
+    transform-origin: center;
+    filter:brightness(170%);
+}
+
+
+/* main timer */
+.main-timer{
+    position: absolute;
+    left:0;
+    top: 23px;
+    left: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: translateZ(0px);
+}
+.timer-inner{
+    width:90px;
+    height:90px;
+    position: absolute;
+    background-size: contain;
+    background-repeat:no-repeat;
+    z-index:2;
+    transform:translateZ(20px);
+}
+.timer-shadow{
+    width:100px;
+    height:100px;
+    transform:translateX(10px) translateY(10px);
+    position: fixed;
+    background-size: contain;
+    background-repeat:no-repeat;
+    filter:brightness(0) blur(8px) opacity(0.2);
+    z-index:1;
+}
+.main-pomodoro-card.focus .timer-inner, .main-pomodoro-card.focus .timer-shadow{
+    background-image: url('../inc/icons/focus_3d_icon.png');
+    margin:28px;
+}
+.main-pomodoro-card.break .timer-inner, .main-pomodoro-card.break .timer-shadow{
+    background-image: url('../inc/icons/break_3d_icon.png');
+    margin:22px;
+}
+
+/* Progress ring */
+.progress-ring {
+    transform: translateZ(14px);
+}
+.progress-ring__circle {
+    transition: 0.35s stroke-dashoffset;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    opacity: 0.4;
+
+}
+.progress-ring__path {
+    opacity: 0.2;
+    position:absolute;
+}
+.progress-ring.shadow {
+    position:absolute;
+    transform:translateX(6px) translateY(6px);
+    filter:brightness(0) blur(8px) opacity(0.4);
+}
+
+/* Time counter */
+.countdown {
+    position: absolute;
+    left: 0;
+    bottom: 59px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 15px;;
+    width: 100%;
+    text-align: center;
+    text-shadow: 6px 6px 8px rgba(0,0,0,0.15);
+}
+.countdown.pause {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+@keyframes blink {
+    0% {opacity:1;}
+    50% {opacity:0.5}
+    100% {opacity: 1;}
+}
+
+/* Bottom control bar */
+.button {
+    width: 130px;
+    height: 40px;
+    position: absolute;
+    bottom:10px;
+    left:10px;
+    border-radius: 16px;
+    background-color: rgba(0,178,157,0.7);
+    transition: 0.3s;
+}
+.main-pomodoro-card.break .button {
+    background-color: rgba(0,178,157,0.7);
+}
+.main-pomodoro-card.focus .button {
+    background-color: rgba(211,146,67,0.7);
+}
+.button-shadow {
+    width: 130px;
+    height: 40px;
+    position: absolute;
+    bottom:4px;
+    left:16px;
+    border-radius: 16px;
+    background-color: rgba(0,0,0,0.1);
+    filter:blur(8px);
+}
+.control {
+    position: absolute;
+    top: 5px;
+    left: 44px;
+    height: 30px;
+    width: 42px;
+    background-color: rgba(0,0,0,0.1);
+    border:none;
+    border-radius: 13px;
+    display: flex;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.control:hover {
+    position: absolute;
+    top:4px;
+    transform: scale(1.1);
+}
+.control img {
+    opacity: 0.7;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    left: 7px;
+    transition: 0.2s;
+}
+.control.pause img {
+    content:url("../inc/icons/pause_24dp.svg");
+}
+.control.play img {
+    content:url("../inc/icons/play_arrow_24dp.svg");
+    left: 6px;
+}
+.control.done img {
+    content:url("../inc/icons/done_24dp.svg");
+    top: 3px;
+}
+.fade {
+    opacity: 0 !important;
+}
+.next {
+    position: absolute;
+    top:5px;
+    right:11px;
+    height: 28px;
+    width: auto;
+    opacity:0.7;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.next:hover {
+    position: absolute;
+    right: 10.5px;
+    transform: scale(1.1);
+}
+.rounds {
+    position: absolute;
+    top:0px;
+    left:10px;
+    width: 30px;
+    text-align: center;
+    margin:0;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+/* settings popup */
+.main-pomodoro-card.focus .main-settings {
+    background-color: rgba(211,146,67,0.7);
+}
+.main-pomodoro-card.break .main-settings{
+    background-color: rgba(0,178,157,0.7);
+}
+
+.main-settings {
+    width: 142px;
+    height: 189px;
+    transition: 0.3s;
+    border-radius: 20px;
+    position: fixed;
+    top:58px;
+    left:32px;
+    z-index:-100;
+    backdrop-filter: blur(20px);
+    font-size: 14px;
+    line-height: 14px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    opacity: 0;
+    display: none;
+}
+
+.setting-line {
+    height: 2px;
+    width: 132px;
+    border-radius: 2px;
+    margin: 6px;
+    margin-top: 10px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.main-settings input {
+    border:none;
+    border-radius: 30px;
+    font-size: 14px;
+    background-color: rgb(0,0,0,0.1);
+    width: 42px;
+    margin-left: auto;
+    color: rgba(255,255,255,0.7);
+    font-family: Roboto;
+    text-align: center;
+}
+.main-settings input:last-of-type{
+    margin-bottom: 14px;
+}
+.main-settings.active {
+    display: initial !important;
+    z-index: 100 !important;
+}
+.main-settings.fadein {
+    opacity: 1 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0;
+  }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -2,10 +2,13 @@
   "name": "toothsome-tomato",
   "version": "0.1.0",
   "author": "Albert Domotor",
-  "description": "toothsome pomo",
+  "description": "A pomodoro app that feels good to use.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "electron-drag": "^2.0.0",
@@ -13,9 +16,38 @@
     "tilt.js": "^1.2.1"
   },
   "devDependencies": {
-    "electron": "^12.2.1"
+    "electron": "^12.2.1",
+    "electron-builder": "^23.6.0",
+    "electron-builder-squirrel-windows": "^24.3.0"
   },
   "build": {
-    "appId": "com.toothsome.tomato"
+    "appId": "com.toothsome.tomato",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    },
+    "squirrelWindows": {
+      "iconUrl": "https://raw.githubusercontent.com/albiDmtr/toothsome-tomato/main/icon.ico"
+    }
   }
 }

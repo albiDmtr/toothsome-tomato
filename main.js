@@ -3,8 +3,8 @@ const path = require('path')
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 1000, //210
-    height: 700, //285
+    width: 210,
+    height: 285,
     icon:  __dirname + '/icon.ico',
     transparent:true,
     frame: false,
@@ -16,7 +16,6 @@ function createWindow () {
       preload: path.join(app.getAppPath(), 'preload.js'),
     }
   })
-  win.webContents.openDevTools()
 
   win.loadFile('index.html')
 }
